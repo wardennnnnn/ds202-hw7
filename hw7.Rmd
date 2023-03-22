@@ -12,13 +12,40 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(ggplot2)
 library(dplyr)
+library(tidyverse)
 data(happy, package="productplots")
-HAPPY <- readRDS("data/HAPPY.rds") #link does not work
-#head(happy)
+HAPPY <- readRDS("data/HAPPY.rds")
+#head(HAPPY)
+HAPPY1 = HAPPY
 ```
 
 1. Data cleaning: the values “IAP”, “DK” and “NA” all encode missing values. Replace all of these instances by the value NA.
+
 ```{r}
+#Finding all the locations of missing values
+#HAPPY, YEAR, AGE, SEX, MARITAL, DEGREE, FINRELA, HEALTH, WTSSALL, PARTYID, POLVIEWS
+tempText = HAPPY1$POLVIEWS
+
+tempIAP = HAPPY1 %>% filter(tempText == "IAP")
+#FINRELA-4383
+#HEALTH-16325
+#PLVIEWS-6777
+
+tempDK = HAPPY1 %>% filter(tempText == "DK") 
+#AGE-1
+#DEGREE-30
+#FINRELA-468
+#HEALTH-30
+#PARTYID-11
+#POLVIEWS-2247
+
+tempNA = HAPPY1 %>% filter(tempText == "NA")
+#none
+```
+
+```{r}
+HAPPY2 <- HAPPY1 %>% 
+  mutate(FINRELA = str_replace(FINRELA, "IAP", "NA"))
 
 ```
 
