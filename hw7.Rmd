@@ -7,47 +7,25 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
-data(happy, package="productplots")
+#data(happy, package="productplots") #not used
 HAPPY <- readRDS("data/HAPPY.rds")
 #head(HAPPY)
-HAPPY1 = HAPPY
+HAPPY1 <- HAPPY
 ```
 
 1. Data cleaning: the values “IAP”, “DK” and “NA” all encode missing values. Replace all of these instances by the value NA.
 
 ```{r}
-#Finding all the locations of missing values
-#HAPPY, YEAR, AGE, SEX, MARITAL, DEGREE, FINRELA, HEALTH, WTSSALL, PARTYID, POLVIEWS
-tempText = HAPPY1$POLVIEWS
-
-tempIAP = HAPPY1 %>% filter(tempText == "IAP")
-#FINRELA-4383
-#HEALTH-16325
-#PLVIEWS-6777
-
-tempDK = HAPPY1 %>% filter(tempText == "DK") 
-#AGE-1
-#DEGREE-30
-#FINRELA-468
-#HEALTH-30
-#PARTYID-11
-#POLVIEWS-2247
-
-tempNA = HAPPY1 %>% filter(tempText == "NA")
-#none
-```
-
-```{r}
-HAPPY2 <- HAPPY1 %>% 
-  mutate(FINRELA = str_replace(FINRELA, "IAP", "NA"))
+#https://www.statology.org/r-replace-values-in-data-frame-conditionally/
+HAPPY1[HAPPY1 == "DK"] <- NA
+HAPPY1[HAPPY1 == "IAP"] <- NA
+HAPPY1[HAPPY1 == "NA"] <- NA
 
 ```
+
 
 2. Check the type of the variable and cast into the right type (factor variable for categorical variables). For age, change “89 OR OLDER” to 89 and assume the variable should be numeric.
 ```{r}
