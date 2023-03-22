@@ -13,8 +13,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
 data(happy, package="productplots")
-#HAPPY <- readRDS("data/HAPPY.rds") #link does not work
-head(happy)
+HAPPY <- readRDS("data/HAPPY.rds") #link does not work
+#head(happy)
 ```
 
 1. Data cleaning: the values “IAP”, “DK” and “NA” all encode missing values. Replace all of these instances by the value NA.
@@ -22,12 +22,10 @@ head(happy)
 
 ```
 
-
 2. Check the type of the variable and cast into the right type (factor variable for categorical variables). For age, change “89 OR OLDER” to 89 and assume the variable should be numeric.
 ```{r}
 
 ```
-
 
 3. Bring all levels of factors into a sensible order. For marital you could e.g. order the levels according to average age.
 ```{r}
