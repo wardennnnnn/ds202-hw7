@@ -26,11 +26,27 @@ HAPPY1[HAPPY1 == "NA"] <- NA
 
 ```
 
-
 2. Check the type of the variable and cast into the right type (factor variable for categorical variables). For age, change “89 OR OLDER” to 89 and assume the variable should be numeric.
 ```{r}
-
+HAPPY2 = HAPPY1
 ```
+
+HAPPY-factor
+```{r}
+HAPPY2 %>% factor(HAPPY)
+```
+HAPPY-cast
+AGE-cast
+SEX-factor
+MARITAL-factor
+DEGREE-factor
+FINRELA-factor
+HEALTH-factor
+WTSSALL-cast
+PARTYID-factor
+POLVIEWS-factor
+
+
 
 3. Bring all levels of factors into a sensible order. For marital you could e.g. order the levels according to average age.
 ```{r}
