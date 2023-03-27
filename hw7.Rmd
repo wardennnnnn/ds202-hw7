@@ -18,7 +18,7 @@ HAPPY <- readRDS("data/HAPPY.rds")
 #head(HAPPY)
 HAPPY1 <- HAPPY
 ```
-
+PART 1
 1. Data cleaning: the values “IAP”, “DK” and “NA” all encode missing values. Replace all of these instances by the value NA.
 
 ```{r}
@@ -32,42 +32,77 @@ tempNA = HAPPY1 %>% filter(tempText == "NA")
 
 ```{r}
 #Replace all IAP, DK, NA, with NA
-#https://www.statology.org/r-replace-values-in-data-frame-conditionally/
 HAPPY1[HAPPY1 == "DK"] <- NA
 HAPPY1[HAPPY1 == "IAP"] <- NA
 HAPPY1[HAPPY1 == "NA"] <- NA
 ```
 
-
 2. Check the type of the variable and cast into the right type (factor variable for categorical variables). For age, change “89 OR OLDER” to 89 and assume the variable should be numeric.
-```{r}
-HAPPY2 = HAPPY1
-```
+3. Bring all levels of factors into a sensible order. For marital you could e.g. order the levels according to average age.
 
 HAPPY-factor
 ```{r}
-HAPPY2 %>% factor(HAPPY)
+HAPPY1$HAPPY = factor(HAPPY1$HAPPY, 
+                      levels = c("NOT TOO HAPPY", "PRETTY HAPPY", "VERY HAPPY"))
 ```
-HAPPY-cast
 
 AGE-cast
 ```{r}
 HAPPY1[HAPPY1 == "89 OR OLDER"] <- 89
+HAPPY1$AGE = as.numeric(HAPPY1$AGE, na.rm=TRUE)
 ```
-
 
 SEX-factor
-MARITAL-factor
-DEGREE-factor
-FINRELA-factor
-HEALTH-factor
-WTSSALL-cast
-PARTYID-factor
-POLVIEWS-factor
-
-
-3. Bring all levels of factors into a sensible order. For marital you could e.g. order the levels according to average age.
 ```{r}
-
+HAPPY1$SEX = factor(HAPPY1$SEX, levels = c("MALE", "FEMALE"))
 ```
+
+MARITAL-factor
+```{r}
+HAPPY1$MARITAL = factor(HAPPY1$MARITAL, 
+                        levels = c("NEVER MARRIED", "MARRIED", "DIVORCED"))
+```
+
+DEGREE-factor
+```{r}
+HAPPY1$DEGREE = factor(HAPPY1$DEGREE, 
+                       levels = c("LT HIGH SCHOOL", "HIGH SCHOOL", 
+                                  "JUNIOR COLLEGE", "BACHELOR", "GRADUATE"))
+```
+
+FINRELA-factor
+```{r}
+HAPPY1$FINRELA = factor(HAPPY1$FINRELA, 
+                        levels = c("FAR BELOW AVERAGE", "BELOW AVERAGE", 
+                                   "AVERAGE", "ABOVE AVERAGE", "FAR ABOVE AVERAGE"))
+```
+
+HEALTH-factor
+```{r}
+HAPPY1$HEALTH = factor(HAPPY1$HEALTH, levels = c("POOR", "FAIR", "GOOD", "EXCELLENT"))
+```
+
+WTSSALL-cast
+```{r}
+HAPPY1$WTSSALL = as.numeric(HAPPY1$WTSSALL, na.rm=TRUE)
+```
+
+PARTYID-factor
+```{r}
+HAPPY1$PARTYID= factor(HAPPY1$PARTYID, 
+                       levels = c("OTHER PARTY","STRONG DEMOCRAT", "NOT STRONG DEMOCRAT",
+                                  "IND, NEAR DEM", "INDEPENDENT", "IND, NEAR REP", 
+                                  "NOT STR REPUBLICAN", "STRONG REPUBLICAN"))
+```
+
+POLVIEWS-factor
+```{r}
+HAPPY1$POLVIEWS = factor(HAPPY1$POLVIEWS, 
+                         levels = c("EXTREMELY LIBERAL", "LIBERAL", 
+                                    "SLIGHTLY LIBERAL", "MODERATE", 
+                                    "SLGHTLY CONSERVATIVE", "CONSERVATIVE", 
+                                    "EXTRMLY CONSERVATIVE"))
+```
+
+PART 2
 
