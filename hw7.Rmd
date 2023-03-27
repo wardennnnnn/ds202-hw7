@@ -24,7 +24,7 @@ PART 1
 ```{r}
 #Check for DK, IAP, NA
 #HAPPY, AGE, SEX, MARITAL, DEGREE, FINRELA, HEALTH, WTSSALL, PARTYID, POLVIEWS
-tempText = HAPPY1$FINRELA
+tempText = HAPPY1$HAPPY
 tempDK = HAPPY1 %>% filter( tempText== "DK")
 tempIAP = HAPPY1 %>% filter(tempText == "IAP")
 tempNA = HAPPY1 %>% filter(tempText == "NA")
@@ -105,4 +105,13 @@ HAPPY1$POLVIEWS = factor(HAPPY1$POLVIEWS,
 ```
 
 PART 2
+
+
+Happiness by age and sex.
+```{r}
+HAPPY1 %>% ggplot(aes(x = AGE, y = SEX, fill = HAPPY)) + 
+  geom_boxplot() +
+  facet_wrap(~HAPPY)
+```
+Not sure why NA is still showing on graph. Most people are between the ages of 30-60. The average "VERY HAPPY" age for men and women is around 46. The average "PRETTY HAPPY" age is higher for women than men. Same for "NOT TOO HAPPY". 
 
