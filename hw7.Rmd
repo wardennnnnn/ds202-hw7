@@ -106,6 +106,21 @@ HAPPY1$POLVIEWS = factor(HAPPY1$POLVIEWS,
 
 PART 2
 
+Kennedy Wendl 
+
+```{r}
+
+ggplot(HAPPY1, aes(x = HAPPY, y = AGE)) +
+  geom_boxplot() + 
+  facet_grid(HEALTH ~ DEGREE)
+
+```
+
+Question: Does health and degree status have an affect on level of happiness?
+
+To answer this question, I created a boxplot which includes the age, level of happiness, degree, and health of the individuals. As shown on the plot above, people with poor health and less than high school level of education are generally more unhappy than those with good/excellent health and who have graduated high school. The uppermost graph on the left highlights this fact, as the level of happiness increases the group size decreases. That being said, this relationship isn't particularly strong. As education and health increases, it becomes harder to determine if they have a substantial effect. Additionally, this could also be a result of varying age groups. 
+
+Andrew Chen
 
 Happiness by age and sex.
 ```{r}
