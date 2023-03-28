@@ -126,9 +126,11 @@ Vrindha Vegiraju
 
 ggplot(HAPPY1, aes(x = HAPPY, y = 89)) +
   geom_boxplot() + 
-  facet_grid(~HEALTH)
+  facet_grid(~HAPPY)
 
 ```
+
+Question: How does the level of health correlate with age and happiness?
 For this question, I changes the age variable to 89 for it to be numeric. I used the age variable to create a boxplot and find the correlation between happiness and a person's age. The graph is not very strong but shows that there are fewer people as happiness increases. Because the ages are so large, the results may not be very clear.
 
 
