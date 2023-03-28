@@ -105,6 +105,7 @@ HAPPY1$POLVIEWS = factor(HAPPY1$POLVIEWS,
 ```
 
 PART 2
+Repo link: https://github.com/wardennnnnn/ds202-hw7
 
 Kennedy Wendl 
 
