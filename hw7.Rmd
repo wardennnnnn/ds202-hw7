@@ -115,6 +115,15 @@ ggplot(HAPPY1, aes(x = HAPPY, y = AGE)) +
   facet_grid(HEALTH ~ DEGREE)
 
 ```
+Vrindha Vegiraju
+```{r}
+
+ggplot(HAPPY1, aes(x = HAPPY, y = 89)) +
+  geom_boxplot() + 
+  facet_grid(~HEALTH)
+
+```
+For this question, I changes the age variable to 89 for it to be numeric. I used the age variable to create a boxplot and find the correlation between happiness and a person's age. The graph is not very strong but shows that there are fewer people as happiness increases. Because the ages are so large, the results may not be very clear.
 
 Question: Does health and degree status have an affect on level of happiness?
 
